@@ -33,7 +33,7 @@ architecture behavioral of rtm is
         clk    : in  std_logic;
         rst    : in  std_logic;
         update : in  std_logic;
-        rand   : out integer range 0 to 10);
+        rand   : out integer range 1 to 10);
     end component;
 
     component rtm_controller
