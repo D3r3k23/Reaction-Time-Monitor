@@ -43,7 +43,7 @@ begin
     start_react <= (num >= (rand * 1000));
     overflow    <= (num >= 9999);
 
-    comb_logic : process( ps, rst, start, react, start_react, overflow )
+    comb_logic : process( all )
     begin
         if (rst = '1') then
             ns <= s_INIT;
