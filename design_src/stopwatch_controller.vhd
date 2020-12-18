@@ -34,7 +34,7 @@ begin
         end if;
     end process;
 
-    comb_logic : process( ps, rst, start, stop, inc, clear )
+    comb_logic : process( all )
     begin
         if (rst = '1') then
             ns <= s_INIT;
