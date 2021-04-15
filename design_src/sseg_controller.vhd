@@ -19,7 +19,7 @@ end sseg_controller;
 architecture behavioral of sseg_controller is
     signal dig_sel  : integer range 0 to 3;
     signal an_sel   : std_logic_vector(3 downto 0);
-    signal cat_data : std_logic_vector(6 downto 0);
+    signal seg_data : std_logic_vector(6 downto 0);
 
     component sseg_decoder
     port(
@@ -28,7 +28,7 @@ architecture behavioral of sseg_controller is
         dig_sel : in integer range 0 to 3;
 
         an_sel   : out std_logic_vector(3 downto 0);
-        cat_data : out std_logic_vector(6 downto 0));
+        seg_data : out std_logic_vector(6 downto 0));
     end component;
 begin
 
@@ -49,13 +49,13 @@ begin
         num      => num,
         dig_sel  => dig_sel,
         an_sel   => an_sel,
-        cat_data => cat_data
+        seg_data => seg_data
     );
 
     an <= not (dig_en and an_sel);
 
     cat(7) <= not dp_en(dig_sel);
 
-    cat(6 downto 0) <= (not cat_data) when (dig_en(dig_sel) = '1') else "1111111";
+    cat(6 downto 0) <= (not seg_data) when (dig_en(dig_sel) = '1') else "1111111";
 
 end behavioral;
