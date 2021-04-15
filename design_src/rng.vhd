@@ -14,12 +14,14 @@ port(
 end rng;
 
 architecture behavioral of rng is
-    signal count : integer range 0 to 65000;
+    signal count : integer range 1 to 10;
 begin
     counter : process( clk )
     begin
         if rising_edge(clk) then
             if (rst = '1') then
+                count <= 0;
+            elsif (count == 10) then
                 count <= 0;
             else
                 count <= count + 1;
@@ -30,7 +32,7 @@ begin
     rng : process( update )
     begin
         if (update = '1') then
-            rand <= (count mod 10) + 1; -- 1 to 10
+            rand <= count;
         end if;
     end process;
 end behavioral;
