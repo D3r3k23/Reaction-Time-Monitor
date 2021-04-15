@@ -12,7 +12,7 @@ port(
     dig_sel : in integer range 0 to 3;
 
     an_sel   : out std_logic_vector(3 downto 0);
-    cat_data : out std_logic_vector(6 downto 0));
+    seg_data : out std_logic_vector(6 downto 0));
 end sseg_decoder;
 
 architecture behavioral of sseg_decoder is
@@ -29,17 +29,17 @@ begin
         end case;
 
         case dig_data is
-            when    0 => cat_data <= "0111111";
-            when    1 => cat_data <= "0000110";
-            when    2 => cat_data <= "1011011";
-            when    3 => cat_data <= "1001111";
-            when    4 => cat_data <= "1100110";
-            when    5 => cat_data <= "1101101";
-            when    6 => cat_data <= "1111101";
-            when    7 => cat_data <= "0000111";
-            when    8 => cat_data <= "1111111";
-            when    9 => cat_data <= "1100111";
-          when others => cat_data <= "0000000";
+            when    0 => seg_data <= "0111111";
+            when    1 => seg_data <= "0000110";
+            when    2 => seg_data <= "1011011";
+            when    3 => seg_data <= "1001111";
+            when    4 => seg_data <= "1100110";
+            when    5 => seg_data <= "1101101";
+            when    6 => seg_data <= "1111101";
+            when    7 => seg_data <= "0000111";
+            when    8 => seg_data <= "1111111";
+            when    9 => seg_data <= "1100111";
+          when others => seg_data <= "0000000";
         end case;
     end process;
 
