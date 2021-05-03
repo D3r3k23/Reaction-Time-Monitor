@@ -52,15 +52,12 @@ architecture behavioral of rtm is
         sseg_en     : out std_logic);
     end component;
 
-    component stopwatch
+    component counter
     port(
-        clk   : in std_logic;
-        rst   : in std_logic;
-        start : in std_logic;
-        stop  : in std_logic;
-        inc   : in std_logic;
-        clear : in std_logic;
-        num   : out integer range 0 to 9999);
+        clk : in  std_logic;
+        rst : in  std_logic;
+        en  : in  std_logic;
+        count_o : out integer range 0 to 9999);
     end component;
 begin
 
@@ -93,15 +90,12 @@ begin
     sw_start <= count_en;
     sw_stop  <= not count_en;
 
-    u3 : stopwatch
+    u3 : counter
     port map(
-        clk   => clk,
-        rst   => rst,
-        start => sw_start,
-        stop  => sw_stop,
-        inc   => '0',
-        clear => count_rst,
-        num   => num
+        clk     => clk,
+        rst     => count_rst,
+        en      => count_en,
+        count_o => num
     );
 
 end behavioral;
